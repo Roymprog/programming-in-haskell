@@ -43,3 +43,21 @@ False ||| a = a
 
 (&&&) :: Bool -> Bool -> Bool
 (&&&) x y = if x then if y then True else False else False
+
+--6 
+
+(&&&&) x y = if x then y else False
+
+--7 
+
+multl :: Int -> (Int -> (Int -> Int))
+multl = \x -> (\y -> (\z -> x*y*z))
+
+--8
+
+luhnDouble :: Int -> Int
+luhnDouble x | 2*x > 9 = 2*x-9
+             | otherwise = 2*x
+
+luhn :: Int -> Int -> Int -> Int -> Bool
+luhn k l m n = sum [luhnDouble k,l,luhnDouble m,n] `mod` 10 == 0
